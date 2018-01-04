@@ -7,7 +7,7 @@ using NLog;
 
 namespace cswm.HotKeys
 {
-    public class HotKeyManager : IDisposable
+    public class HotKeyManager : IDisposable, IMessageFilter
     {
         private static readonly Logger log = LogManager.GetCurrentClassLogger();
 
@@ -79,21 +79,22 @@ namespace cswm.HotKeys
             return true;
         }
 
-        public void Handle(Message m)
+        public bool PreFilterMessage(ref Message m)
         {
             if (m.Msg == Win32.WM_HOTKEY)
             {
                 var id = m.WParam.ToInt32();
 
-                MessageBox.Show($"Hotkey {id} has been pressed!");
-
                 // ReSharper disable once InconsistentlySynchronizedField
                 if (hotKeys.TryGetValue(id, out var def))
                 {
-                    MessageBox.Show($"{def}");
+                    log.Trace($"{def}");
                     def.Action();
+                    return true;
                 }
             }
+
+            return false;
         }
 
         private int GetNextHotKeyId()
@@ -102,6 +103,7 @@ namespace cswm.HotKeys
         }
 
         #region IDisposable
+
         private void ReleaseUnmanagedResources()
         {
             lock (hotKeys)
@@ -123,6 +125,7 @@ namespace cswm.HotKeys
         {
             ReleaseUnmanagedResources();
         }
+
         #endregion
 
         private class Win32

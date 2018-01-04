@@ -8,10 +8,7 @@ namespace cswm.Windows
         public static void RemoveBorder(IntPtr hwnd)
         {
             var style = Win32.GetWindowLong(hwnd, Win32.GWL_STYLE);
-
-            //force a redraw
-            Win32.SetWindowLong(hwnd, Win32.GWL_STYLE, (style & ~Win32.WS_SYSMENU));
-            Win32.SetWindowLong(hwnd, Win32.GWL_STYLE, (style & ~Win32.WS_CAPTION));
+            Win32.SetWindowLong(hwnd, Win32.GWL_STYLE, (style & ~Win32.WS_SYSMENU & ~Win32.WS_CAPTION));
             Win32.SetWindowPos(hwnd, 0, 0, 0, 0, 0, Win32.SWP_NOMOVE | Win32.SWP_NOZORDER | Win32.SWP_NOSIZE | Win32.SWP_SHOWWINDOW);
         }
 

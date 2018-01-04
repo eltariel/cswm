@@ -32,7 +32,7 @@ namespace cswm.HotKeys
         public static KeyCombo Parse(string shortcut)
         {
             var parts = shortcut.Split('+').Select(p => p.Trim()).Reverse().ToList();
-            var key = (System.Windows.Forms.Keys)Enum.Parse(typeof(System.Windows.Forms.Keys), parts.First());
+            var key = (Keys)Enum.Parse(typeof(Keys), parts.First());
             var mods = (KeyModifiers)Enum.Parse(typeof(KeyModifiers), string.Join(",", parts.Skip(1)));
             return new KeyCombo(mods, key);
         }

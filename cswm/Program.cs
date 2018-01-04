@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
 namespace cswm
@@ -13,7 +14,7 @@ namespace cswm
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new WindowManagerHost());
+            Application.Run(new CswmApp());
         }
     }
 }

@@ -7,7 +7,7 @@ namespace cswm.HotKeys
     {
         None = 0,
         Alt = 1,
-        Control = 2,
+        Ctrl = 2,
         Shift = 4,
         Win = 8
     }

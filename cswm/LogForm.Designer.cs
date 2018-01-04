@@ -1,6 +1,6 @@
 ﻿namespace cswm
 {
-    partial class WindowManagerHost
+    partial class LogForm
     {
         /// <summary>
         /// Required designer variable.
@@ -36,17 +36,19 @@
             this.logTarget.Dock = System.Windows.Forms.DockStyle.Fill;
             this.logTarget.Location = new System.Drawing.Point(0, 0);
             this.logTarget.Name = "logTarget";
-            this.logTarget.Size = new System.Drawing.Size(1051, 178);
+            this.logTarget.Size = new System.Drawing.Size(645, 285);
             this.logTarget.TabIndex = 0;
             this.logTarget.Text = "";
             // 
-            // WindowManagerHost
+            // LogForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1051, 178);
+            this.ClientSize = new System.Drawing.Size(645, 285);
             this.Controls.Add(this.logTarget);
-            this.Name = "WindowManagerHost";
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            this.Name = "LogForm";
             this.Text = "cswm Log Window";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.OnFormClosing);
             this.Load += new System.EventHandler(this.OnFormLoad);
